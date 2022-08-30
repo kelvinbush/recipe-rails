@@ -1,0 +1,16 @@
+<h3>Create new Food</h3>
+
+<%= form_with model: @food, url: food_path, method: :post, data: { turbo: false } do |form| %>
+  <div class="mb-3">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control', placeholder: 'Title' %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :text %>
+    <%= form.text_area :text, class: 'form-control', placeholder: 'Content' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.submit 'Create post', class: 'btn btn-primary' %>
+  </div>
+<% end %>
