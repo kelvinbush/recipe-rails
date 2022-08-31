@@ -1,0 +1,48 @@
+     
+    <div class="recipe-show-container"> 
+         
+      <h3><%= @recipe.name %></h3>
+      <div>
+        Public
+        <form action="/recipes/<%=params[:id]%>" method="patch" data-remote="true">
+          <label class="switch">
+            <input type="checkbox" name="recipe[public]" value="1">
+            <span class="slider round"></span>
+            <input type="submit" value="sub">
+          </label>
+        </form>
+      </div>
+      <div class="recipe-description">
+        <h4>Preparation time: <%= @recipe.preparatio_time %></h4>
+        <h4>Cooking time: <%= @recipe.cooking_time %></h4>
+        <p class="description"><%= @recipe.description %></p>
+      </div>
+    </div>
+    <div class="food-recipe-container">
+       <div class="recipe-buttons">
+          <button>Generate Shopping List</button>
+          <a href="<%=new_recipe_recipe_food_path(params[:id])%>" class="add_ingredient_link">
+            Add Ingredient
+          </a>
+       </div>
+       <% @recipe_foods.each do |recipe_food|%>
+           <div class="recipe_food_list">
+             <div>
+               <p><%= recipe_food.name%></p>
+             </div>
+             <div>
+               <p><%= recipe_food.quantity%>g</p>
+             </div>
+             <div>
+               <p>$<%= recipe_food.price%></p>
+             </div>
+             <div>
+                <button>Modify</button>
+   
+              
+                
+              </div>
+           </div>
+       <%end%> 
+    </div>
+  

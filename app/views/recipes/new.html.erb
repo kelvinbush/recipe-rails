@@ -1,0 +1,24 @@
+<h2>Add a new recipe</h2>
+
+<form action="/recipes/" method="post" data-remote="true">
+    <input type="hidden" name="recipe[user_id]" value="<%=current_user.id%>" />
+  <div>
+    <label >Name:</label>
+    <input type="text" id="tilte" name="recipe[name]">
+  </div>
+  <div>
+    <label >Prep time:</label>
+    <input type="text" id="tilte" name="recipe[preparatio_time]">
+  </div>
+
+  <div>
+    <label >Cooking time:</label>
+    <input type="text" id="tilte" name="recipe[cooking_time]">
+  </div>
+
+  <div>
+    <label >Description:</label>
+    <textarea name="recipe[description]"></textarea>
+  </div>
+  <input type="submit" value="Submit">
+</form>

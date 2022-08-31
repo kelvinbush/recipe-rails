@@ -1,0 +1,11 @@
+<h2>Add new Ingredient</h2>
+<a href="<%=recipe_path(params[:recipe_id]) %>">See recipe</a>
+<% @foods.each do |food| %>
+   <div class="food-l">
+      <p><%=food.name %></p>
+      <%= button_to "ADD INGREDIENT",
+        {:controller => "recipe_foods", :action => "create", food_id: "#{food.id}"},
+        {:method=>:post}
+      %>
+   </div>
+<% end %>
