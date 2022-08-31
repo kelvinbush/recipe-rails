@@ -1,0 +1,20 @@
+.recipe_food_list {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 2fr;
+    width: 80%;
+    border: 1px solid rgba(0, 0, 0, 0.772);
+}
+
+.recipe_food_list div {
+    border-right: 1px solid rgba(0, 0, 0, 0.744);
+}
+
+.recipe-buttons {
+    width: 80%;
+    position: relative;
+}
+
+.add_ingredient_link {
+    position: absolute;
+    right: 0;
+}
