@@ -1,0 +1,28 @@
+.header {
+    width: 100%;
+    margin: 0 0 30px 0;
+    display: flex;
+    height: 70px;
+    border-bottom: 1px solid rgb(87, 87, 87);
+    align-items: center;
+    position: relative;
+}
+
+.logout {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background-color: rgb(21, 31, 33);
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 5px 12px;
+}
+
+nav a {
+    margin-right: 30px;
+    text-decoration: none;
+    padding: 6px 12px;
+    color: white;
+    background-color: rgba(1, 137, 42, 0.843);
+}

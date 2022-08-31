@@ -14,8 +14,10 @@
  *= require_self
  *= require 'recipe_index'
  *= require 'recipe_show'
+ *= require 'public_recipes_index'
+ *= require 'header'
  */
-
+ 
 form {
     max-width:650px;
 }

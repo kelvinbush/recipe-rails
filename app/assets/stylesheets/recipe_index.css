@@ -1,0 +1,24 @@
+.add_new_recipe {
+    text-decoration: none;
+    padding: 6px 15px;
+    background-color: rgb(7, 46, 67);
+    color: white;
+    position: absolute;
+    right: 0;
+    top: 20px;
+}
+
+.recipe-container {
+    width: 80%;
+    border: 1px solid rgba(1, 21, 34, 0.886);
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    padding: 20px;
+}
+
+.Title {
+    width: 80%;
+    margin: 0 0 40px 0;
+    position: relative;
+}
