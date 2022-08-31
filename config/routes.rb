@@ -9,5 +9,4 @@ Rails.application.routes.draw do
   end
 
   resources :public_recipes, only: %i[index show]
-
 end

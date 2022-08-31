@@ -18,5 +18,4 @@ class RecipeFoodsController < ApplicationController
     @recipe_food = RecipeFood.find(params[:id])
     redirect_to recipe_path(params[:recipe_id]) if @recipe_food.update(quantity: params[:quantity])
   end
-
-end    
+end
