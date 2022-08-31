@@ -18,6 +18,19 @@
  *= require 'header'
  */
 
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 16px;
+    background-color: #eee;
+}
+
 form {
   max-width: 650px;
 }
@@ -80,4 +93,13 @@ input:checked + .slider::before {
 
 .slider.round::before {
   border-radius: 50%;
+}
+
+.btn-link {
+    text-decoration: underline;
+    padding: 0;
+}
+
+tr:nth-child(even) {
+    background-color: #d9d7d7;
 }

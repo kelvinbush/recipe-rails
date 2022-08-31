@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   end
 
   resources :public_recipes, only: %i[index show]
+
+  resources :foods, only: [:index, :create, :new, :destroy]
 end
