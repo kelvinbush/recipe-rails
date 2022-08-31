@@ -1,13 +1,11 @@
 class FoodsController < ApplicationController
-
   load_and_authorize_resource
 
   def index
     @foods = Food.includes(:user).where(user: current_user)
   end
 
-  def new
-  end
+  def new; end
 
   def create
     @food = current_user.foods.create(food_params)
@@ -31,5 +29,4 @@ class FoodsController < ApplicationController
   def food_params
     params.require(:food).permit(:name, :measurement_unit, :price, :quantity)
   end
-
 end
