@@ -3,4 +3,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :foods, foreign_key: :user_id, dependent: :delete_all
+  validates :name, presence: true, length: { in: 4..250 }
 end
