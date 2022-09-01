@@ -1,0 +1,20 @@
+<%= render "shared/header"%>
+
+<h2>Public Recipes</h2>
+
+<div class="public_recipe_container">
+  <% @recipes_public.each do |recipe_public| %>
+    <div class="recipe_pulic">
+       <div>
+          <a href="<%= public_recipe_path(recipe_public[:recipe].id)%>">
+            <h4><%= recipe_public[:recipe].recipe_name%></h4>
+          </a>
+          <h6>by: <%= recipe_public[:recipe].user_name%></h6>
+       </div>
+       <div>
+          <p>Total foods Items: <%= recipe_public[:recipe_food].length%></p>
+          <p>Total price: $<%= recipe_public[:total_price]%></p>
+       </div>
+    </div>
+  <%end%>
+</div>

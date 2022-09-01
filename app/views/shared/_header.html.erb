@@ -1,0 +1,15 @@
+<header class="header">
+<nav>
+  <a href="/">
+    Foods
+  </a>
+  <a href="/recipes">
+    Recipes
+  </a>
+  <a href="/public_recipes">
+    Public
+  </a>
+</nav>  
+
+  <%= button_to "logout", destroy_user_session_path, method: :delete, class: 'logout'  %>
+</header>
