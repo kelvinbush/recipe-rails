@@ -12,12 +12,32 @@
  *
  *= require_tree .
  *= require_self
- *= require 'recipe_index'
- *= require 'recipe_show'
  */
 
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 16px;
+    background-color: #eee;
+}
+
 form {
-    max-width:650px;
+    max-width: 650px;
+}
+
+.btn-link {
+    text-decoration: underline;
+    padding: 0;
+}
+
+tr:nth-child(even) {
+    background-color: #d9d7d7;
 }
 
 .switch {
@@ -26,13 +46,13 @@ form {
     width: 34px;
     height: 18px;
   }
-  
-  .switch input { 
+
+  .switch input {
     opacity: 0;
     width: 0;
     height: 0;
   }
-  
+
   .slider {
     position: absolute;
     cursor: pointer;
@@ -44,7 +64,7 @@ form {
     -webkit-transition: .4s;
     transition: .4s;
   }
-  
+
   .slider:before {
     position: absolute;
     content: "";
@@ -56,26 +76,26 @@ form {
     -webkit-transition: .4s;
     transition: .4s;
   }
-  
+
   input:checked + .slider {
     background-color: #2196F3;
   }
-  
+
   input:focus + .slider {
     box-shadow: 0 0 1px #2196F3;
   }
-  
+
   input:checked + .slider:before {
     -webkit-transform: translateX(16px);
     -ms-transform: translateX(16px);
     transform: translateX(16px);
   }
-  
+
   /* Rounded sliders */
   .slider.round {
     border-radius: 34px;
   }
-  
+
   .slider.round:before {
     border-radius: 50%;
   }
