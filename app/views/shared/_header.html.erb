@@ -9,7 +9,11 @@
   <a href="/public_recipes">
     Public
   </a>
-</nav>  
 
-  <%= button_to "logout", destroy_user_session_path, method: :delete, class: 'logout'  %>
+  <a href="/general_shopping_list">
+    Shopping
+  </a>
+</nav>
+
+  <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: 'logout' %>
 </header>

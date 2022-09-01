@@ -1,12 +1,12 @@
 class PublicRecipesController < ApplicationController
   def index
-    @recipes = User.joins(:recipes).includes(recipes: :user)
+    @recipes = User.joins(:recipes)
       .select('users.name as user_name, recipes.id, recipes.name as recipe_name')
       .where("recipes.public = 'yes'")
 
     @recipes_public = []
     @recipes.each do |recipe|
-      recipe_food = Food.joins(:recipe_foods).includes(recipe_foods: :recipe)
+      recipe_food = Food.joins(:recipe_foods)
         .select('foods.name, recipe_foods.id, recipe_foods.quantity, foods.price')
         .where("recipe_foods.recipe_id = #{recipe.id}")
       total_price = 0
@@ -19,7 +19,7 @@ class PublicRecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    @recipe_foods = Food.joins(:recipe_foods).includes(recipe_foods: :recipe)
+    @recipe_foods = Food.joins(:recipe_foods)
       .select('foods.name, recipe_foods.id, recipe_foods.quantity, foods.price')
       .where("recipe_foods.recipe_id = #{params[:id]}")
   end
