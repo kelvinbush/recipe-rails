@@ -1,0 +1,28 @@
+<%= render "shared/header" %>
+<h4 class="Shop">Shopping list</h4>
+
+<div class="d-flex">
+  <h5 class="me-3">Amount of items to buy: <%= @food_amount %></h5>
+  <h5>Total value of food needed: $<%= @total_price %></h5>
+</div>
+
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Food</th>
+    <th scope="col">Quantity</th>
+    <th scope="col">Price</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if @missing_foods.count > 0 %>
+    <% @missing_foods.each do |food| %>
+      <tr>
+        <td><%= food.name %></td>
+        <td><%= food.quantity %> <%= food.measurement_unit %></td>
+        <td>$<%= food.price %></td>
+      </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
