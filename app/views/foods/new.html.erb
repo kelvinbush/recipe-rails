@@ -1,3 +1,4 @@
+<%= render "shared/header" %>
 <h3>Create new Food</h3>
 
 <%= form_with model: @food, url: foods_path, method: :post, data: { turbo: false } do |form| %>

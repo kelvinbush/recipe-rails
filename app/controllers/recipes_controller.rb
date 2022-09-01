@@ -6,8 +6,8 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @recipe_foods = Food.joins(:recipe_foods)
-      .select('foods.name, recipe_foods.id, recipe_foods.quantity, foods.price')
-      .where("recipe_foods.recipe_id = #{params[:id]}")
+                        .select('foods.name, recipe_foods.id, recipe_foods.quantity, foods.price')
+                        .where("recipe_foods.recipe_id = #{params[:id]}")
   end
 
   def new
@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = current_user.recipes.create(recipe_params)
     redirect_to recipes_path if @recipe.save
   end
 
@@ -27,7 +27,7 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :user_id, :preparatio_time, :cooking_time)
+    params.require(:recipe).permit(:name, :description, :preparatio_time, :cooking_time)
   end
 
   def update
