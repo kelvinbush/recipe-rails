@@ -1,0 +1,28 @@
+<%= render "shared/header" %>
+
+<h2>Add a new recipe</h2>
+
+<%= form_with model: @recipe, url: recipes_path, method: :post, data: { turbo: false } do |form| %>
+  <div class="mb-3">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control', placeholder: 'Recipe name' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :preparatio_time %>
+    <%= form.text_field :preparatio_time, class: 'form-control', placeholder: '1h' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :cooking_time %>
+    <%= form.text_field :cooking_time, class: 'form-control', placeholder: '3h' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control', placeholder: 'Description' %>
+  </div>
+  <div class="mb-3">
+    <%= form.submit 'Add recipe', class: 'btn btn-primary' %>
+  </div>
+<% end %>

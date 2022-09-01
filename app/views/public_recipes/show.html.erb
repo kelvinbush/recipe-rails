@@ -1,0 +1,37 @@
+ <%= render "shared/header"%>
+    <div class="recipe-show-container"> 
+         
+      <h3><%= @recipe.name %></h3>
+      <div class="recipe-description">
+        <h4>Preparation time: <%= @recipe.preparatio_time %></h4>
+        <h4>Cooking time: <%= @recipe.cooking_time %></h4>
+        <p class="description"><%= @recipe.description %></p>
+      </div>
+    </div>
+    <div class="food-recipe-container">
+          <div class="recipe_food_list_public">
+             <div>
+               <h4>Food name</h4>
+             </div>
+             <div>
+               <h4>Quantity</h4>
+             </div>
+             <div>
+               <h4>Price</h4>
+             </div>
+           </div>
+       <% @recipe_foods.each do |recipe_food|%>
+           <div class="recipe_food_list_public">
+             <div>
+               <p><%= recipe_food.name%></p>
+             </div>
+             <div>
+               <p><%= recipe_food.quantity%>g</p>
+             </div>
+             <div>
+               <p>$<%= recipe_food.price%></p>
+             </div>
+           </div>
+       <%end%> 
+    </div>
+  

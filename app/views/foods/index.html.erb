@@ -1,0 +1,29 @@
+<%= render "shared/header"%>
+<h3>My Foods</h3>
+<div class="d-flex justify-content-end my-3">
+  <%= link_to 'Add food', new_food_path, class: 'btn btn-primary' %>
+</div>
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Food</th>
+    <th scope="col">Measurement unit</th>
+    <th scope="col">Quantity</th>
+    <th scope="col">Unit price</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if @foods.count > 0 %>
+    <% @foods.each do |food| %>
+      <tr class="">
+        <td><%= food.name %></td>
+        <td><%= food.measurement_unit %></td>
+        <td><%= food.quantity %></td>
+        <td>$<%= food.price %></td>
+        <td><%= button_to "Delete", food_path(food), method: :delete, class: "btn btn-link" %></td>
+      </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
