@@ -28,5 +28,4 @@ class RecipeFoodsController < ApplicationController
   def recipe_food_params
     params.require(:recipe_food).permit(:quantity)
   end
-
 end
