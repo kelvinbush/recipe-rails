@@ -5,7 +5,7 @@ class ShoppingController < ApplicationController
     @total_price = 0
     @recipe_foods = []
     @missing_foods = []
-    @foods = Food.includes(:user).where(user: current_user)
+    @foods = Food.all.where(user: current_user)
     @recipes = current_user.recipes
     @recipes.includes(:recipe_foods).each do |recipe|
       recipe.recipe_foods.map do |food|
