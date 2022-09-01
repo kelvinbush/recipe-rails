@@ -1,5 +1,5 @@
 class ShoppingController < ApplicationController
-
+  # rubocop:disable Metrics
   def index
     @food_amount = 0
     @total_price = 0
@@ -15,9 +15,7 @@ class ShoppingController < ApplicationController
     @missing_foods_ids = @foods.map(&:id) - @recipe_foods.map(&:food_id)
     @missing_foods_ids.map do |id|
       @foods.map do |food|
-        if food.id == id
-          @missing_foods << food
-        end
+        @missing_foods << food if food.id == id
       end
     end
     @food_amount = @missing_foods_ids.count
@@ -25,4 +23,5 @@ class ShoppingController < ApplicationController
       @total_price += food.quantity * food.price
     end
   end
+  # rubocop:enable Metrics
 end
