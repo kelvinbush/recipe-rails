@@ -1,14 +1,14 @@
 class RecipesController < ApplicationController
 
   def index
-    @recipes = Recipe.where(user_id: current_user.id)
+    @recipes = current_user.recipes
   end
 
   def show
     @recipe = Recipe.find(params[:id])
-    @recipe_foods = Food.joins(:recipe_foods).includes(recipe_foods: :recipe)
-      .select('foods.name, recipe_foods.id, recipe_foods.quantity, foods.price')
-      .where("recipe_foods.recipe_id = #{params[:id]}")
+    @recipe_foods = Food.joins(:recipe_foods)
+                        .select('foods.name, recipe_foods.id, recipe_foods.quantity, foods.price')
+                        .where("recipe_foods.recipe_id = #{params[:id]}")
   end
 
   def new
