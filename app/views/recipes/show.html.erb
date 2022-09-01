@@ -1,15 +1,16 @@
-     
+ <%= render "shared/header"%>    
     <div class="recipe-show-container"> 
          
       <h3><%= @recipe.name %></h3>
       <div>
-        Public
+        
         <form action="/recipes/<%=params[:id]%>" method="patch" data-remote="true">
-          <label class="switch">
-            <input type="checkbox" name="recipe[public]" value="1">
+        <input type="submit" value="Public">
+          <label class="switch" for="check">
+          <input type="checkbox" id="check" name="public" <%if @recipe.public == 'yes'%>checked<%end%> value="yes">
             <span class="slider round"></span>
-            <input type="submit" value="sub">
           </label>
+          
         </form>
       </div>
       <div class="recipe-description">
@@ -25,6 +26,20 @@
             Add Ingredient
           </a>
        </div>
+          <div class="recipe_food_list">
+             <div>
+               <p>Food</p>
+             </div>
+             <div>
+               <p>Quantity</p>
+             </div>
+             <div>
+               <p>Price $</p>
+             </div>
+             <div>
+                <p>Actions</p>
+              </div>
+          </div>
        <% @recipe_foods.each do |recipe_food|%>
            <div class="recipe_food_list">
              <div>
@@ -37,9 +52,9 @@
                <p>$<%= recipe_food.price%></p>
              </div>
              <div>
-                <button>Modify</button>
+                <a href="<%=edit_recipe_recipe_food_path(params[:id], recipe_food.id)%>">Modify</a>
    
-              
+                <%= button_to "Remove", recipe_recipe_food_path(params[:id], recipe_food.id), method: :delete, class: 'delete-recipe_food'  %>
                 
               </div>
            </div>

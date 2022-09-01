@@ -1,5 +1,8 @@
-<h2>recipes</h2>
-
+<%= render "shared/header"%>
+<div class="Title">
+  <h2>recipes</h2>
+  <a href="/recipes/new" class="add_new_recipe">Add new recipe</a>
+</div>
 <div class="all-recipes-container">
   <% @recipes.each do |recipe| %>
      
