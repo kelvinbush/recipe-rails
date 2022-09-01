@@ -5,8 +5,7 @@ class FoodsController < ApplicationController
     @foods = Food.includes(:user).where(user: current_user)
   end
 
-  def new
-  end
+  def new; end
 
   def create
     @food = current_user.foods.create(food_params)
