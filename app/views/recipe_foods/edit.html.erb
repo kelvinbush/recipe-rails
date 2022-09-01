@@ -1,0 +1,9 @@
+<%= render "shared/header"%>
+
+<form action="<%=recipe_recipe_food_path(params[:recipe_id], params[:id]) %>" method="patch" data-remote="true">
+  <div>
+    <label >Edit quantity:</label>
+    <input type="text" id="quantity" name="quantity">
+  </div>
+  <input type="submit" value="Submit">
+</form>
