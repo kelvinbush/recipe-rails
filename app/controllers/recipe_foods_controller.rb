@@ -14,8 +14,18 @@ class RecipeFoodsController < ApplicationController
     redirect_to recipe_path(params[:recipe_id]) if @recipe_food.delete
   end
 
-  def update
+  def edit
+    @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = RecipeFood.find(params[:id])
-    redirect_to recipe_path(params[:recipe_id]) if @recipe_food.update(quantity: params[:quantity])
+  end
+
+  def update
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_food = RecipeFood.find(params[:id])
+    redirect_to recipe_path(@recipe) if @recipe_food.update(recipe_food_params)
+  end
+
+  def recipe_food_params
+    params.require(:recipe_food).permit(:quantity)
   end
 end

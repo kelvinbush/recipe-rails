@@ -1,26 +1,28 @@
-<%= render "shared/header"%>
+<%= render "shared/header" %>
 
 <h2>Add a new recipe</h2>
 
-<form action="/recipes/" method="post" data-remote="true">
-    <input type="hidden" name="recipe[user_id]" value="<%=current_user.id%>" />
-  <div>
-    <label >Name:</label>
-    <input type="text" id="tilte" name="recipe[name]">
-  </div>
-  <div>
-    <label >Prep time:</label>
-    <input type="text" id="tilte" name="recipe[preparatio_time]">
+<%= form_with model: @recipe, url: recipes_path, method: :post, data: { turbo: false } do |form| %>
+  <div class="mb-3">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control', placeholder: 'Recipe name' %>
   </div>
 
-  <div>
-    <label >Cooking time:</label>
-    <input type="text" id="tilte" name="recipe[cooking_time]">
+  <div class="mb-3">
+    <%= form.label :preparatio_time %>
+    <%= form.text_field :preparatio_time, class: 'form-control', placeholder: '1h' %>
   </div>
 
-  <div>
-    <label >Description:</label>
-    <textarea name="recipe[description]"></textarea>
+  <div class="mb-3">
+    <%= form.label :cooking_time %>
+    <%= form.text_field :cooking_time, class: 'form-control', placeholder: '3h' %>
   </div>
-  <input type="submit" value="Submit">
-</form>
+
+  <div class="mb-3">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control', placeholder: 'Description' %>
+  </div>
+  <div class="mb-3">
+    <%= form.submit 'Add recipe', class: 'btn btn-primary' %>
+  </div>
+<% end %>

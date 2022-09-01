@@ -1,9 +1,12 @@
-<%= render "shared/header"%>
+<%= render "shared/header" %>
 
-<form action="<%=recipe_recipe_food_path(params[:recipe_id], params[:id]) %>" method="patch" data-remote="true">
-  <div>
-    <label >Edit quantity:</label>
-    <input type="text" id="quantity" name="quantity">
+<%= form_with model: @recipe_food, url: recipe_recipe_food_path(@recipe, @recipe_food), method: :patch, data: { turbo: false } do |form| %>
+  <div class="mb-3">
+    <%= form.label :quantity %>
+    <%= form.text_field :quantity, class: 'form-control', placeholder: 12, type: 'number' %>
   </div>
-  <input type="submit" value="Submit">
-</form>
+  <div class="mb-3">
+    <%= form.submit 'Save Changes', class: 'btn btn-primary' %>
+  </div>
+
+<% end %>
