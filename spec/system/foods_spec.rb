@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Foods", type: :system do
+RSpec.describe 'Foods', type: :system do
   include Devise::Test::IntegrationHelpers
   before do
     driven_by(:rack_test)
@@ -19,5 +19,4 @@ RSpec.describe "Foods", type: :system do
     click_on 'Add food'
     expect(page).to have_current_path(new_food_path)
   end
-
 end
