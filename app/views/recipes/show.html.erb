@@ -1,63 +1,102 @@
- <%= render "shared/header"%>    
-    <div class="recipe-show-container"> 
-         
-      <h3><%= @recipe.name %></h3>
+<%= render "shared/header" %>
+<div class="recipe-show-container">
+
+  <h3><%= @recipe.name %></h3>
+  <div>
+
+    <form action="/recipes/<%= params[:id] %>" method="patch" data-remote="true">
+      <input type="submit" value="Public">
+      <label class="switch" for="check">
+        <input type="checkbox" id="check" name="public"
+               <% if @recipe.public == 'yes' %>checked
+               <% end %> value="yes">
+        <span class="slider round"></span>
+      </label>
+
+    </form>
+  </div>
+  <div class="recipe-description">
+    <h4>Preparation time: <%= @recipe.preparatio_time %></h4>
+    <h4>Cooking time: <%= @recipe.cooking_time %></h4>
+    <p class="description"><%= @recipe.description %></p>
+  </div>
+</div>
+
+
+<div class="food-recipe-container">
+  <div class="recipe-buttons">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Launch demo modal
+    </button>
+    <a href="<%= new_recipe_recipe_food_path(params[:id]) %>" class="add_ingredient_link">
+      Add Ingredient
+    </a>
+  </div>
+  <div class="recipe_food_list">
+    <div>
+      <p>Food</p>
+    </div>
+    <div>
+      <p>Quantity</p>
+    </div>
+    <div>
+      <p>Price $</p>
+    </div>
+    <div>
+      <p>Actions</p>
+    </div>
+  </div>
+  <% @recipe_foods.each do |recipe_food| %>
+    <div class="recipe_food_list">
       <div>
-        
-        <form action="/recipes/<%=params[:id]%>" method="patch" data-remote="true">
-        <input type="submit" value="Public">
-          <label class="switch" for="check">
-          <input type="checkbox" id="check" name="public" <%if @recipe.public == 'yes'%>checked<%end%> value="yes">
-            <span class="slider round"></span>
-          </label>
-          
-        </form>
+        <p><%= recipe_food.name %></p>
       </div>
-      <div class="recipe-description">
-        <h4>Preparation time: <%= @recipe.preparatio_time %></h4>
-        <h4>Cooking time: <%= @recipe.cooking_time %></h4>
-        <p class="description"><%= @recipe.description %></p>
+      <div>
+        <p><%= recipe_food.quantity %>g</p>
+      </div>
+      <div>
+        <p>$<%= recipe_food.price %></p>
+      </div>
+      <div>
+        <a href="<%= edit_recipe_recipe_food_path(params[:id], recipe_food.id) %>">Modify</a>
+
+        <%= button_to "Remove", recipe_recipe_food_path(params[:id], recipe_food.id), method: :delete, class: 'delete-recipe_food' %>
+
       </div>
     </div>
-    <div class="food-recipe-container">
-       <div class="recipe-buttons">
-          <button>Generate Shopping List</button>
-          <a href="<%=new_recipe_recipe_food_path(params[:id])%>" class="add_ingredient_link">
-            Add Ingredient
-          </a>
-       </div>
-          <div class="recipe_food_list">
-             <div>
-               <p>Food</p>
-             </div>
-             <div>
-               <p>Quantity</p>
-             </div>
-             <div>
-               <p>Price $</p>
-             </div>
-             <div>
-                <p>Actions</p>
-              </div>
+  <% end %>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">General Shopping List</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6>Choose an inventory to use</h6>
+        <div class="d-flex justify-space-between">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Select Inventory
+            </button>
+            <ul class="dropdown-menu">
+              <% if @inventories.count > 0 %>
+                <% @inventories.each do |inventory| %>
+                  <li>
+                    <%= link_to inventory.name, shopping_list_path(@recipe.id, inventory.id), class: 'dropdown-item' %>
+                  </li>
+                <% end %>
+              <% else %>
+                <p>Your inventory is empty</p>
+              <% end %>
+            </ul>
           </div>
-       <% @recipe_foods.each do |recipe_food|%>
-           <div class="recipe_food_list">
-             <div>
-               <p><%= recipe_food.name%></p>
-             </div>
-             <div>
-               <p><%= recipe_food.quantity%>g</p>
-             </div>
-             <div>
-               <p>$<%= recipe_food.price%></p>
-             </div>
-             <div>
-                <a href="<%=edit_recipe_recipe_food_path(params[:id], recipe_food.id)%>">Modify</a>
-   
-                <%= button_to "Remove", recipe_recipe_food_path(params[:id], recipe_food.id), method: :delete, class: 'delete-recipe_food'  %>
-                
-              </div>
-           </div>
-       <%end%> 
+        </div>
+      </div>
     </div>
+  </div>
+</div>
   

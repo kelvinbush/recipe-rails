@@ -1,17 +1,17 @@
-<%= render "shared/header"%>
+<%= render "shared/header" %>
 
 <h2>Add new Ingredient</h2>
-<a href="<%=recipe_path(params[:recipe_id]) %>">See recipe</a>
+<a href="<%= recipe_path(params[:recipe_id]) %>">See recipe</a>
 <% @foods.each do |food| %>
-   <div class="food-l">
-      <p><%=food.name %></p>
-      <div>
-        <form action="<%=recipe_recipe_foods_path(params[:recipe_id]) %>" method="post" data-remote="true">
-          <input type="hidden" name="[food_id]" value="<%=food.id %>"/>
-          <label for="<%=food.name %>">quantity:</label>
-          <input type="number" id="<%=food.name %>" name="[quantity]"/>
-          <input type="submit" value="Add Ingredient"/>
-        </form>  
-      </div>
-   </div>
+  <div class="food-l">
+    <p><%= food.name %></p>
+    <div>
+      <form action="<%= recipe_recipe_foods_path(params[:recipe_id]) %>" method="post" data-remote="true">
+        <input type="hidden" name="[food_id]" value="<%= food.id %>"/>
+        <label for="<%= food.name %>">quantity:</label>
+        <input type="number" id="<%= food.name %>" name="[quantity]"/>
+        <input type="submit" value="Add Ingredient"/>
+      </form>
+    </div>
+  </div>
 <% end %>
