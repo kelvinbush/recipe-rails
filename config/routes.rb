@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   resources :public_recipes, only: %i[index show]
 
   resources :foods, only: [:index, :create, :new, :destroy]
+
+  get 'shopping_list/:recipe_id/:inventory_id', to: 'inventory_shopping#index', as: :shopping_list
 end

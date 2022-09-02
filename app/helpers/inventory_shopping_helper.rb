@@ -1,0 +1,2 @@
+module InventoryShoppingHelper
+end

@@ -5,7 +5,7 @@
   <div>
 
     <form action="/recipes/<%= params[:id] %>" method="patch" data-remote="true">
-      <input type="submit" value="Save">
+      <input type="submit" value="Public">
       <label class="switch" for="check">
         <input type="checkbox" id="check" name="public"
                <% if @recipe.public == 'yes' %>checked
@@ -21,9 +21,13 @@
     <p class="description"><%= @recipe.description %></p>
   </div>
 </div>
+
+
 <div class="food-recipe-container">
   <div class="recipe-buttons">
-    <%= link_to "Generate Shopping List", general_shopping_list_path, class: "btn btn-primary mb-1" %>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Launch demo modal
+    </button>
     <a href="<%= new_recipe_recipe_food_path(params[:id]) %>" class="add_ingredient_link">
       Add Ingredient
     </a>
@@ -61,5 +65,38 @@
       </div>
     </div>
   <% end %>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">General Shopping List</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6>Choose an inventory to use</h6>
+        <div class="d-flex justify-space-between">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Select Inventory
+            </button>
+            <ul class="dropdown-menu">
+              <% if @inventories.count > 0 %>
+                <% @inventories.each do |inventory| %>
+                  <li>
+                    <%= link_to inventory.name, shopping_list_path(@recipe.id, inventory.id), class: 'dropdown-item' %>
+                  </li>
+                <% end %>
+              <% else %>
+                <p>Your inventory is empty</p>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
   
